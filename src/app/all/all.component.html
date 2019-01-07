@@ -1,0 +1,10 @@
+<app-top-title></app-top-title>
+<div *ngIf = "smileys" class="smileysList">
+  <div *ngFor = "let smiley of smileys.names" class="smileyRow">
+    <div class="name">{{smiley}}</div>
+    <div class="link">{{[smileys.data[smiley]]}}</div>
+    <img [src]="[smileys.data[smiley]]" alt="no img">
+    <div class="toFavourites" (click)="addToFavourites(smiley)"></div>
+    <div class="toDeleted" (click)="addToDeleted(smiley)"></div>
+  </div>
+</div>
