@@ -9,6 +9,7 @@ import {DataServiceService} from "../data-service.service";
 })
 export class AllComponent implements OnInit {
 
+  header:string = 'Все';
   // smileys: {
   //   data:Object,
   //   names:Array<string>

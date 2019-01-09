@@ -7,6 +7,7 @@ import {DataServiceService} from "../data-service.service";
   styleUrls: ['./favourites.component.scss']
 })
 export class FavouritesComponent implements OnInit {
+  header:string = 'Любимые';
 message:string;
   testValue:string = 'значение в избранном';
   //constructor(private data: SmileysDataService) { }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deleted.component.scss']
 })
 export class DeletedComponent implements OnInit {
-
+  header:string = 'Удаленные';
   constructor() { }
 
   ngOnInit() {
