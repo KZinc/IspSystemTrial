@@ -1,3 +1,8 @@
-<p>
-  list works!
-</p>
+<div *ngIf = "smileys" class="smileysList">
+  <app-smiley-row *ngFor = "let smiley of smileys.names"
+                  [smileys] = "smileys"
+                  [smiley] = "smiley"
+  >
+  </app-smiley-row>
+</div>
+<app-smiley-row></app-smiley-row>

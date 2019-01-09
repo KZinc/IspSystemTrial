@@ -10,9 +10,11 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { DeletedComponent } from './deleted/deleted.component';
 import { AllComponent } from './all/all.component';
 import {HttpClientModule} from "@angular/common/http";
+import {SmileyRowComponent} from "./smiley-row/smiley-row.component";
 
 @NgModule({
   declarations: [
+    SmileyRowComponent,
     AppComponent,
     NavigationComponent,
     TopTitleComponent,
