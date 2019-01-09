@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {AllComponent} from "../all/all.component";
+import {DataServiceService} from "../data-service.service";
 
 
 @Component({
@@ -25,15 +25,11 @@ export class SmileyRowComponent {
         this.showFullSize = value;
     }
 
-    constructor(private data:AllComponent) {
+    constructor(private data: DataServiceService) {
     }
 
-
-    addToFavourites(smiley){
-        this.data.addToFavourites(smiley);
-    }
-    addToDeleted(smiley){
-        this.data.addToDeleted(smiley);
+    deleteSmiley(){
+        this.data.deleteItem(this.smiley);
     }
 
 }

@@ -1,7 +1,6 @@
 <app-top-title [header] = 'header'></app-top-title>
-<!--<div *ngIf = "smileys" class="smileysList">-->
-  <!--<app-smiley-row *ngFor = "let smiley of smileys.names" class="smileyRow" [smileys]="smileys" [smiley]="smiley">-->
-  <!--</app-smiley-row>-->
-<!--</div>-->
+<div *ngIf = "smileys" class="smileysList">
+  <app-smiley-row *ngFor = "let smiley of smileys.names" class="smileyRow" [smileys]="smileys" [smiley]="smiley">
+  </app-smiley-row>
+</div>
 
-<div>{{message}}</div> <div>Кнопка -> </div> <div (click)="changeHim()"> click me</div>
