@@ -1,5 +1,5 @@
 <div class="leftPanel">
-  <div routerLink="/">{{allText}}</div>
-  <div routerLink="/favourites">{{favourites}}</div>
-  <div routerLink="/deleted">{{deleted}}</div>
+  <div routerLink="/" (click)="changeUrl('/')" [class.chosen] = "chosen('/')">{{allText}}</div>
+  <div routerLink="/favourites" (click)="changeUrl('/favourites')" [class.chosen] = "chosen('/favourites')">{{favourites}}</div>
+  <div routerLink="/deleted" (click)="changeUrl('/deleted')" [class.chosen] = "chosen('/deleted')">{{deleted}}</div>
 </div>

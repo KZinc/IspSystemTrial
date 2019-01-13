@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DataServiceService} from "../data-service.service";
 
 
@@ -7,12 +7,12 @@ import {DataServiceService} from "../data-service.service";
     templateUrl: './smiley-row.component.html',
     styleUrls: ['./smiley-row.component.scss'],
 })
-export class SmileyRowComponent {
+export class SmileyRowComponent implements OnInit{
 
    showFullSize: boolean = false;
    top:string = '70px';
    left:string = '90px';
-   isFavourite: boolean = false;
+
 
     @Input() page:string;
     @Input() smiley: string;
@@ -20,6 +20,8 @@ export class SmileyRowComponent {
         data: Object,
         names: Array<string>
     };
+
+    isFavourite: boolean;
 
     showBigBro(event, value){
         this.top = (event.y - 75)+'px';
@@ -30,11 +32,13 @@ export class SmileyRowComponent {
     constructor(private data: DataServiceService) {
     }
 
-
-
     addToFavourites(){
-        this.isFavourite = true;
-        this.data.addToFavourites(this.smiley)
+        if(this.isFavourite){
+            this.data.deleteFavourite(this.smiley)
+        }else {
+            this.data.addToFavourites(this.smiley)
+        }
+        this.isFavourite = !this.isFavourite;
     }
 
     deleteSmiley(){
@@ -44,6 +48,10 @@ export class SmileyRowComponent {
             this.data.deleteFavourite(this.smiley);
         }
 
+    }
+
+    ngOnInit(): void {
+        this.isFavourite = this.data.favouritesList.includes(this.smiley);
     }
 
 }

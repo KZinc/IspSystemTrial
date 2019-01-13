@@ -1,7 +1,10 @@
 <div class="smileyRow">
     <div class="name" title={{smiley}}>{{smiley}}</div>
     <div class="link">{{[smileys.data[smiley]]}}</div>
-    <img [src]="[smileys.data[smiley]]" alt="no img" class="img" (mouseover)="showBigBro($event, true)">
+    <img [src]="[smileys.data[smiley]]"
+         alt="no img" class="img"
+         [class.shine]='isFavourite'
+         (mouseover)="showBigBro($event, true)">
     <img [src]="[smileys.data[smiley]]" alt="no img" class="bigImg" (mouseleave)="showBigBro($event, false)" [ngStyle]="{
     display:showFullSize?'flex':'none',top:top,
     left:left

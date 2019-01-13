@@ -37,9 +37,9 @@
   .columnsHeader{
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-bottom: 1px solid  #a459ff;
+    border-top: 1px solid #a459ff;
+    border-left: 1px solid #a459ff;
     margin: 0 2px 0 2px;
 
     div{
@@ -50,7 +50,7 @@
       text-overflow: ellipsis;
       height: 30px;
       padding-left: 20px;
-      border-right: 1px solid black;
+      border-right: 1px solid #a459ff;
     }
 
     .name, .preview, .actions {
