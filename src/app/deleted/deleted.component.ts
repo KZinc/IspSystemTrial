@@ -32,7 +32,7 @@ export class DeletedComponent implements OnInit {
         this.display = this.smileys.names.filter(name => {
           return this.data.deletedList.includes(name) &&
               (~name.toLowerCase().indexOf(filter.trim().toLowerCase()) || filter.trim() === '');
-        }).slice(0, 20);
+        });
       });
     })
   }

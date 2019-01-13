@@ -1,9 +1,16 @@
-<app-top-title [header] = 'header' [filter]="filter"></app-top-title>
-<div *ngIf = "smileys" class="smileysList">
-  <app-smiley-row *ngFor = "let smiley of display"
-                  [page]="header"
-                  [smileys]="smileys"
-                  [smiley]="smiley">
-  </app-smiley-row>
+<div class="wrapper">
+  <app-top-title [header] = 'header' [filter]="filter"></app-top-title>
+  <div *ngIf = "smileys" class="smileysList">
+    <app-smiley-row *ngFor = "let smiley of display"
+                    [page]="header"
+                    [smileys]="smileys"
+                    [smiley]="smiley">
+    </app-smiley-row>
+  </div>
+  <app-pagination class="pagination"
+                  (pageChanged)="onPageChanged($event)"
+                  [pageNumber]="pageNumber"
+                  [maxNumber]="maxNumber"
+  ></app-pagination>
 </div>
 

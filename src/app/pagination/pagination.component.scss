@@ -1,0 +1,33 @@
+.pagination{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: 85px;
+  color: white;
+  font-size: 20px;
+  justify-content: center;
+  background-color: #a459ff;
+  border-top: 2px solid #ececec;
+  border-left: 2px solid #ececec;
+  align-items: center;
+
+  .previousPage{
+    background: url("./../icons/up.png") no-repeat center;
+    background-size:contain;
+    transform: rotate(270deg);
+    margin: 0 50px 0 0;
+  }
+  .nextPage{
+    background: url("./../icons/up.png") no-repeat center;
+    background-size:contain;
+    transform: rotate(90deg);
+    margin: 0 0 0 50px;
+  }
+  .previousPage, .nextPage{
+    height: 60px;
+    width: 60px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

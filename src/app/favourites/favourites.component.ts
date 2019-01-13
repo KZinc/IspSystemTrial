@@ -32,7 +32,7 @@ export class FavouritesComponent implements OnInit {
                 this.display = this.smileys.names.filter(name => {
                     return this.data.favouritesList.includes(name) &&
                         (~name.toLowerCase().indexOf(filter.trim().toLowerCase()) || filter.trim() === '');
-                }).slice(0, 20);
+                });
             });
         })
     }

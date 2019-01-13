@@ -11,6 +11,7 @@ import { DeletedComponent } from './deleted/deleted.component';
 import { AllComponent } from './all/all.component';
 import {HttpClientModule} from "@angular/common/http";
 import {SmileyRowComponent} from "./smiley-row/smiley-row.component";
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {SmileyRowComponent} from "./smiley-row/smiley-row.component";
     ListComponent,
     FavouritesComponent,
     DeletedComponent,
-    AllComponent
+    AllComponent,
+    PaginationComponent
   ],
   imports: [
     HttpClientModule,
