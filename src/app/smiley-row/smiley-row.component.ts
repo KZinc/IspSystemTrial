@@ -50,6 +50,10 @@ export class SmileyRowComponent implements OnInit{
 
     }
 
+    resurrect(){
+        this.data.restoreItem(this.smiley);
+    }
+
     ngOnInit(): void {
         this.isFavourite = this.data.favouritesList.includes(this.smiley);
     }

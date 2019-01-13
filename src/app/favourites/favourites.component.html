@@ -1,6 +1,6 @@
 <app-top-title [header] = 'header' [filter]="filter"></app-top-title>
 <div *ngIf = "smileys" class="smileysList">
-    <app-smiley-row *ngFor = "let smiley of display" class="smileyRow"
+    <app-smiley-row *ngFor = "let smiley of display"
                     [smileys]="smileys"
                     [page]="header"
                     [smiley]="smiley">

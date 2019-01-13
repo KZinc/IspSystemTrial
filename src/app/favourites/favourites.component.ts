@@ -21,7 +21,12 @@ export class FavouritesComponent implements OnInit {
     ngOnInit() {
         this.data.getAllSmileys().subscribe(data => {
             this.smileys = {data: data, names: Object.keys(data)};
-            this.data.favourites.subscribe(() => this.display = this.data.favouritesList);
+            this.data.favourites.subscribe(() => {
+                this.display = this.data.favouritesList.filter(name => {
+                    return this.data.favouritesList.includes(name) &&
+                        (~name.toLowerCase().indexOf(this.filter.trim().toLowerCase()) || this.filter.trim() === '');
+                });
+            });
             this.data.filter.subscribe(filter => {
                 this.filter = filter;
                 this.display = this.smileys.names.filter(name => {

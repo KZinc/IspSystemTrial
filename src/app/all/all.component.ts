@@ -27,12 +27,13 @@ export class AllComponent implements OnInit {
             this.display = Object.keys(data).slice(0, 20);
             this.data.deleted.subscribe(() => {
                 this.deleted = this.data.deletedList;
-                this.display = this.smileys.names.filter(name => !this.deleted.includes(name)).slice(0, 20)
+                this.display = this.smileys.names.filter(name => !this.deleted.includes(name)).slice(0, 20);
             });
             this.data.filter.subscribe(filter => {
                 this.filter = filter;
                 this.display = this.smileys.names.filter(name => {
-                    return ~name.toLowerCase().indexOf(filter.trim().toLowerCase()) || filter.trim() === '';
+                    return !this.data.deletedList.includes(name) &&
+                        (~name.toLowerCase().indexOf(filter.trim().toLowerCase()) || filter.trim() === '');
                 }).slice(0, 20);
             });
             this.data.favourites.subscribe(() => this.favourites = this.data.favouritesList);

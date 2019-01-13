@@ -12,11 +12,22 @@
     <div class="actionsWrap">
         <div [class.toFavourites]='!isFavourite' [class.fromFavourites]="isFavourite"
              (click)="addToFavourites()"
+             title="Добавить/убрать избранное"
              [ngStyle]="{
-            display: page === 'Любимые'? 'none': 'flex'
+            display: page === 'Удаленные'|| page === 'Любимые' ? 'none': 'flex'
          }"
         ></div>
-        <div class="toDeleted" (click)="deleteSmiley()">
-    </div>
+        <div class="toDeleted"
+             title="Удалить"
+             [ngStyle]="{
+            display: page === 'Удаленные'? 'none': 'flex'
+         }"
+             (click)="deleteSmiley()"
+        ></div>
+        <div class="resurrect" (click)="resurrect()"
+             title="Восстановить"
+             [ngStyle]="{
+                display: page === 'Удаленные'? 'flex': 'none'
+         }"></div>
     </div>
 </div>
