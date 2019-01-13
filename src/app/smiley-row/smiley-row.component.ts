@@ -12,7 +12,9 @@ export class SmileyRowComponent {
    showFullSize: boolean = false;
    top:string = '70px';
    left:string = '90px';
+   isFavourite: boolean = false;
 
+    @Input() page:string;
     @Input() smiley: string;
     @Input() smileys: {
         data: Object,
@@ -28,8 +30,20 @@ export class SmileyRowComponent {
     constructor(private data: DataServiceService) {
     }
 
+
+
+    addToFavourites(){
+        this.isFavourite = true;
+        this.data.addToFavourites(this.smiley)
+    }
+
     deleteSmiley(){
-        this.data.deleteItem(this.smiley);
+        if(this.page === 'Все'){
+            this.data.deleteItem(this.smiley);
+        }else{
+            this.data.deleteFavourite(this.smiley);
+        }
+
     }
 
 }

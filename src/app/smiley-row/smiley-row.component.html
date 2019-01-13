@@ -1,12 +1,19 @@
 <div class="smileyRow">
-  <div class="name" title={{smiley}}>{{smiley}}</div>
-  <div class="link">{{[smileys.data[smiley]]}}</div>
-  <img [src]="[smileys.data[smiley]]" alt="no img" class="img" (mouseover)="showBigBro($event, true)">
-  <img [src]="[smileys.data[smiley]]" alt="no img" class= "bigImg" (mouseleave)="showBigBro($event, false)" [ngStyle]="{
+    <div class="name" title={{smiley}}>{{smiley}}</div>
+    <div class="link">{{[smileys.data[smiley]]}}</div>
+    <img [src]="[smileys.data[smiley]]" alt="no img" class="img" (mouseover)="showBigBro($event, true)">
+    <img [src]="[smileys.data[smiley]]" alt="no img" class="bigImg" (mouseleave)="showBigBro($event, false)" [ngStyle]="{
     display:showFullSize?'flex':'none',top:top,
     left:left
   }">
-  <div class="toFavourites" (click)="addToFavourites(smiley)"></div>
-  <div class="toDeleted" (click)="deleteSmiley()">
-  </div>
+    <div class="actionsWrap">
+        <div [class.toFavourites]='!isFavourite' [class.fromFavourites]="isFavourite"
+             (click)="addToFavourites()"
+             [ngStyle]="{
+            display: page === 'Любимые'? 'none': 'flex'
+         }"
+        ></div>
+        <div class="toDeleted" (click)="deleteSmiley()">
+    </div>
+    </div>
 </div>

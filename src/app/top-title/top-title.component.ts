@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataServiceService} from "../data-service.service";
 
 @Component({
   selector: 'app-top-title',
@@ -7,8 +8,20 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TopTitleComponent implements OnInit {
   @Input() header:string;
-  constructor() { }
+  @Input() filter:string;
 
+  constructor(private data: DataServiceService) { }
+
+  glows:boolean = false;
+
+  setGlow(){
+    this.glows = !this.glows;
+  }
+  
+  onKey(event){
+    this.data.setFilter(event.target.value);
+  }
+  
   ngOnInit() {
   }
 

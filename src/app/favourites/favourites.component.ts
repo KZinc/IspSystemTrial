@@ -4,18 +4,23 @@ import {DataServiceService} from "../data-service.service";
 @Component({
     selector: 'app-favourites',
     templateUrl: './favourites.component.html',
-    styleUrls: ['./favourites.component.scss']
+    styleUrls: ['./favourites.component.scss'],
 })
 export class FavouritesComponent implements OnInit {
     header: string = 'Любимые';
-    message: string;
-
+    smileys: {
+        data: Object,
+        names: Array<string>
+    };
+    display:Array<string> =[];
 
     constructor(private data: DataServiceService) {
     }
 
     ngOnInit() {
-        console.warn('iInit');
-        this.data.currentList.subscribe(message => this.message = message)
+        this.data.getAllSmileys().subscribe(data => {
+            this.smileys = {data: data, names: Object.keys(data)};
+            this.data.favourites.subscribe(() => this.display = this.data.favouritesList);
+        })
     }
 }

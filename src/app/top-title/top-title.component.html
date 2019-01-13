@@ -3,7 +3,12 @@
     <div class="header">{{header}}</div>
     <div class="search">
       <label for="search" >Поиск</label>
-      <input id="search"/>
+      <input id="search"
+             (focus)="setGlow()"
+             [value]="filter"
+             (keyup)="onKey($event)"
+             [class.glowing] = 'glows'
+             (blur)="setGlow()"/>
     </div>
   </div>
   <div class="columnsHeader">
