@@ -10,6 +10,8 @@ export class TopTitleComponent implements OnInit {
   @Input() header:string;
   @Input() filter:string;
 
+  placeHolder:string = 'Введите название смайла';
+
   constructor(private data: DataServiceService) { }
 
   glows:boolean = false;

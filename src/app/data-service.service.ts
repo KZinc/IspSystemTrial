@@ -18,6 +18,7 @@ export class DataServiceService {
     filter = this.displayFilter.asObservable();
 
     filterValue: string;
+    pageNumber:number;
     favouritesList: Array<string> = [];
     deletedList: Array<string> = [];
 
@@ -43,6 +44,10 @@ export class DataServiceService {
         setCookie('filter', filter, {expires: 100500})
     }
 
+    savePage(pageNumber){
+        setCookie('pageNumber', pageNumber, {expires: 100500})
+    }
+
     addToFavourites(item: string) {
         this.favouritesList.push(item);
         this.displayFavourites.next({item, action: 'add'});
@@ -59,9 +64,11 @@ export class DataServiceService {
         let deletedListCookie = getCookie('deletedList');
         let favouritesListCookie = getCookie('favouritesList');
         let filterCookie = getCookie('filter');
-
+        let pageNumberCookie = getCookie('pageNumber');
+        
         this.deletedList = deletedListCookie ? deletedListCookie.split(',') : [];
         this.favouritesList = favouritesListCookie ? favouritesListCookie.split(',') : [];
+        this.pageNumber = pageNumberCookie ? Number(pageNumberCookie) : 1;
         if (filterCookie) this.setFilter(filterCookie)
     }
 

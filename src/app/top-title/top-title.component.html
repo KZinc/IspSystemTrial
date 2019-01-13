@@ -7,6 +7,7 @@
              (focus)="setGlow()"
              [value]="filter"
              (keyup)="onKey($event)"
+             [placeholder]="placeHolder"
              [class.glowing] = 'glows'
              (blur)="setGlow()"/>
     </div>

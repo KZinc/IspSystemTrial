@@ -27,6 +27,7 @@ export class AllComponent implements OnInit {
     onPageChanged(page: number) {
         this.pageNumber = page;
         this.display = this.namesArray.slice(this.getChunk().begin, this.getChunk().end);
+        this.data.savePage(page);
     }
 
     getChunk() {
@@ -37,14 +38,15 @@ export class AllComponent implements OnInit {
         this.data.getAllSmileys().subscribe(data => {
             this.smileys = {data: data, names: Object.keys(data)};
             this.namesArray = Object.keys(data);
-            this.display = this.namesArray.slice(this.getChunk().begin, this.getChunk().end);
-            this.maxNumber = Number((Object.keys(data).length / 100).toFixed());
-            this.pageNumber = 1;
+            this.pageNumber = this.data.pageNumber;
+            this.display = this.namesArray.filter(name => !this.deleted.includes(name))
+                .slice(this.getChunk().begin, this.getChunk().end);
+            this.maxNumber = Number((this.namesArray.length / 100).toFixed())+1;
 
             this.data.deleted.subscribe(() => {
                 this.deleted = this.data.deletedList;
                 this.namesArray = this.smileys.names.filter(name => !this.deleted.includes(name));
-                this.maxNumber = Number((this.namesArray.length / 100).toFixed());
+                this.maxNumber = Number((this.namesArray.length / 100).toFixed())+1;
                 if(this.maxNumber < this.pageNumber) this.pageNumber = this.maxNumber;
                 this.display = this.namesArray.slice(this.getChunk().begin, this.getChunk().end);
             });
@@ -55,10 +57,12 @@ export class AllComponent implements OnInit {
                     return !this.data.deletedList.includes(name) &&
                         (~name.toLowerCase().indexOf(filter.trim().toLowerCase()) || filter.trim() === '');
                 });
-                this.pageNumber = 1;
+                this.pageNumber = this.data.pageNumber;
+                this.maxNumber = Number((this.namesArray.length / 100).toFixed())+1;
+                if(this.maxNumber < this.pageNumber) this.pageNumber = this.maxNumber;
                 this.display = this.namesArray.slice(this.getChunk().begin, this.getChunk().end);
-                this.maxNumber = Number((this.namesArray.length / 100).toFixed() +1);
             });
+
             this.data.favourites.subscribe(() => this.favourites = this.data.favouritesList);
         });
     }
